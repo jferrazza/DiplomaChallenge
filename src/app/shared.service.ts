@@ -10,6 +10,7 @@ export class SharedService {
   ident: number;
   username: string;
   isAdmin: boolean = false;
+  payingfor: number;
   
 
   getUserList():Observable<any[]> {
@@ -28,13 +29,18 @@ export class SharedService {
   }
 
   deleteUser(val:any){
-    return this.http.delete(this.APIUrl+"/User",val);
+    return this.http.delete(this.APIUrl+"/User/"+val);
   }
   
   getGameList():Observable<any[]> {
     return this.http.get<any>(this.APIUrl+"/Game");
   }
-
+  getGameListFuture():Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Future");
+  }
+  getGameListPast():Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Past");
+  }
   addGame(val:any){
     return this.http.post(this.APIUrl+"/Game",val);
   }
@@ -44,12 +50,14 @@ export class SharedService {
   }
 
   deleteGame(val:any){
-    return this.http.delete(this.APIUrl+"/Game",val);
+    return this.http.delete(this.APIUrl+"/Game/"+val);
   }
   getPayList():Observable<any[]> {
     return this.http.get<any>(this.APIUrl+"/Pay");
   }
-
+  getPay(val:any):Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Pay?venue="+val);
+  }
   addPay(val:any){
     return this.http.post(this.APIUrl+"/Pay",val);
   }

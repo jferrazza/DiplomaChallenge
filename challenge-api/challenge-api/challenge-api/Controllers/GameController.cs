@@ -35,7 +35,7 @@ namespace challenge_api.Controllers
     {
       try
       {
-        string query = $@"insert into dbo.cGame(detail,venue,date) values ('{user.detail}','{user.venue}','{user.date}')";
+        string query = $@"insert into dbo.cGame(detail,venue,date,time) values ('{user.detail}','{user.venue}','{user.date}','{user.time}')";
 
         DataTable table = new DataTable();
         using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))

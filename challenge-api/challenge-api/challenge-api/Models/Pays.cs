@@ -8,7 +8,7 @@ namespace challenge_api.Models
   public class Pays
   {
     public int id { get; set; }
-    public int playerid { get; set; }
+    public int userid { get; set; }
     public int gameid { get; set; }
     public double amount { get; set; }
   }

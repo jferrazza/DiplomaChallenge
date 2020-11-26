@@ -1,0 +1,20 @@
+<h2>Pay for venue!</h2>
+
+<form [formGroup]="payForm" (ngSubmit)="onSubmit(payForm.value)">
+
+    <div class="form-group">
+        <label for="amount">Amount for venue</label>
+        $<input id="amount" type="number" class="form-control" formControlName="amount">
+    </div>
+    <div class="form-group">
+        <label for="userid">Person</label>
+        <p>Choose person: {{this.personname}}</p>
+        <button type="button" class="btn btn-outline-dark" (click)="getUser(dataItem.id,dataItem.name)" *ngFor="let dataItem of getUsers">
+            {{dataItem.name}}
+        </button>
+    </div>
+    <hr>
+
+    <button type="submit" class="btn btn-primary">Submit!</button>
+    <button type="button" routerLink="/home" class="btn btn-danger">Cancel</button>
+</form>

@@ -17,7 +17,7 @@ namespace challenge_api.Controllers
   {
     public HttpResponseMessage Get()
     {
-      string query = "select id, playerid, gameid, amount from dbo.cPays";
+      string query = "select id, userid, gameid, amount from dbo.cPays";
 
       DataTable table = new DataTable();
       using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))
@@ -30,12 +30,26 @@ namespace challenge_api.Controllers
 
       return Request.CreateResponse(HttpStatusCode.OK, table);
     }
+    public HttpResponseMessage Get(int venue)
+    {
+      string query = "select id, userid, gameid, amount from dbo.cPays where gameid=" +venue;
 
+      DataTable table = new DataTable();
+      using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))
+      using (var cmd = new SqlCommand(query, con))
+      using (var da = new SqlDataAdapter(cmd))
+      {
+        cmd.CommandType = CommandType.Text;
+        da.Fill(table);
+      }
+
+      return Request.CreateResponse(HttpStatusCode.OK, table);
+    }
     public string Post(Pays user)
     {
       try
       {
-        string query = $@"insert into dbo.Pays(playerid, gameid, amount) values ('{user.playerid}','{user.gameid}','{user.amount}')";
+        string query = $@"insert into dbo.cPays(userid, gameid, amount) values ({user.userid},{user.gameid},{user.amount})";
 
         DataTable table = new DataTable();
         using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))
@@ -58,7 +72,7 @@ namespace challenge_api.Controllers
     {
       try
       {
-        string query = $@"update dbo.Pays set playerid='{user.playerid}', gameid='{user.gameid}', amount='{user.amount}' where id={user.id}";
+        string query = $@"update dbo.cPays set userid='{user.userid}', gameid='{user.gameid}', amount='{user.amount}' where id={user.id}";
 
         DataTable table = new DataTable();
         using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))

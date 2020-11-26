@@ -11,13 +11,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {HttpClientModule} from '@angular/common/http';
+import { AddComponent } from './add/add.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     MainComponent,
-    SigninComponent
+    SigninComponent,
+    AddComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import {HttpClientModule} from '@angular/common/http';
     RouterModule.forRoot([
       {path: '', component: SigninComponent},
       {path: 'home', component: MainComponent},
-      {path: 'signup', component: SignupComponent}
+      {path: 'signup', component: SignupComponent},
+      {path: 'add',component: AddComponent},
+      {path: 'pay',component: PaymentComponent}
     ]),
   ],
   providers: [],
