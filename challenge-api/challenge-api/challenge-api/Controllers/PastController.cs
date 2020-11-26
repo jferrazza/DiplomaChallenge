@@ -14,7 +14,7 @@ namespace challenge_api.Controllers
   {
     public HttpResponseMessage Get()
     {
-      string query = "select id, detail, venue, date from dbo.cGame where date<=GETDATE()";
+      string query = "select id, detail, venue, date, time from dbo.cGame where date<=GETDATE()";
 
       DataTable table = new DataTable();
       using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))

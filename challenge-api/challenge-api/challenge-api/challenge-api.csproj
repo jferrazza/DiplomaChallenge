@@ -166,6 +166,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PastController.cs" />
     <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Controllers\PayeeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +233,7 @@
     <Folder Include="Views\Future\" />
     <Folder Include="Views\Game\" />
     <Folder Include="Views\Past\" />
+    <Folder Include="Views\Payee\" />
     <Folder Include="Views\Pay\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { AddComponent } from './add/add.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SpendingComponent } from './spending/spending.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaymentComponent } from './payment/payment.component';
     MainComponent,
     SigninComponent,
     AddComponent,
-    PaymentComponent
+    PaymentComponent,
+    SpendingComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { PaymentComponent } from './payment/payment.component';
       {path: 'home', component: MainComponent},
       {path: 'signup', component: SignupComponent},
       {path: 'add',component: AddComponent},
-      {path: 'pay',component: PaymentComponent}
+      {path: 'pay',component: PaymentComponent},
+      {path: 'spending',component: SpendingComponent}
     ]),
   ],
   providers: [],

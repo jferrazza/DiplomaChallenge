@@ -17,7 +17,7 @@ namespace challenge_api.Controllers
   {
     public HttpResponseMessage Get()
     {
-      string query = "select id, detail, venue, date from dbo.cGame";
+      string query = "select id, detail, venue, date, time from dbo.cGame";
 
       DataTable table = new DataTable();
       using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))
@@ -80,7 +80,7 @@ namespace challenge_api.Controllers
     {
       try
       {
-        string query = $@"delete from dbo.cGame where id={id}";
+        string query = $@"delete from dbo.cPays where gameid={id}; delete from dbo.cGame where id={id}";
 
         DataTable table = new DataTable();
         using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))

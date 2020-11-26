@@ -40,7 +40,14 @@ export class SharedService {
   }
   getGameListPast():Observable<any[]> {
     return this.http.get<any>(this.APIUrl+"/Past");
+  } 
+  getGameListPaid():Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Payee");
   }
+  getUserListPaid():Observable<any[]> {
+    return this.http.get<any>(this.APIUrl+"/Payee?byusers=true");
+  }
+
   addGame(val:any){
     return this.http.post(this.APIUrl+"/Game",val);
   }

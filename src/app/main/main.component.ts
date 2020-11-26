@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
   }
   gameListF: any = [];
   gameListP: any = [];
-  getUsers: any[];
+  gameListD: any[];
 
   refreshList() {
     this.service.getGameListFuture().subscribe(data => {
@@ -32,8 +32,8 @@ export class MainComponent implements OnInit {
     this.service.getGameListPast().subscribe(data => {
       this.gameListP = data;
     })
-    this.service.getUserList().subscribe(a=>{
-      this.getUsers = a;
+    this.service.getGameListPaid().subscribe(a=>{
+      this.gameListD = a;
     });
   }
   delete(data, past) {
