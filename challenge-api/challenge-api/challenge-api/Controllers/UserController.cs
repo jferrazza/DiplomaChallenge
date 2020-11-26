@@ -30,7 +30,21 @@ namespace challenge_api.Controllers
 
       return Request.CreateResponse(HttpStatusCode.OK, table);
     }
+    public HttpResponseMessage Get(string name, string password)
+    {
+      string query = $"select id, name, password, role from dbo.cUsers where name='{name}' and password='{password}'";
 
+      DataTable table = new DataTable();
+      using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ChallengeDB"].ConnectionString))
+      using (var cmd = new SqlCommand(query, con))
+      using (var da = new SqlDataAdapter(cmd))
+      {
+        cmd.CommandType = CommandType.Text;
+        da.Fill(table);
+      }
+
+      return Request.CreateResponse(HttpStatusCode.OK, table);
+    }
     public string Post(User user)
     {
       try

@@ -1,0 +1,23 @@
+<h1>Main Menu</h1>
+<h5>Welcome, {{this.share.username}}. <button class="btn btn-sm btn-danger" onclick="if (confirm('Are you sure you want to log out?')==true) document.location='/'">Sign Out</button></h5>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Venue</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of gameList">
+            <td>{{dataItem.id}}</td>
+            <td>{{dataItem.detail}}</td>
+            <td>{{dataItem.date}}</td>
+            <td>{{dataItem.venue}}</td>
+            <td><button class="btn btn-danger">Drop</button><button class="btn btn-primary">Insert Payment</button></td>
+
+        </tr>
+    </tbody>
+</table>
