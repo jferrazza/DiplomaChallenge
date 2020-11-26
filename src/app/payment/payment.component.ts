@@ -41,7 +41,7 @@ export class PaymentComponent implements OnInit {
     this.service.addPay(data).subscribe(a => {
       console.log(data);
       alert(a);
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     })  
   }
   person = -1;

@@ -11,17 +11,20 @@ export class MainComponent implements OnInit {
 
   share;
 
-  constructor(private router:Router,private service:SharedService) {
+  constructor(private router: Router, private service: SharedService) {
     this.share = this.service;
     this.refreshList();
   }
   ngOnInit(): void {
-    if (this.service.ident == null)
-      {this.router.navigate(['/']);
-    console.warn("No login specified. Quitting...")}
+    if (this.service.ident == null) {
+      this.router.navigate(['/']);
+      console.warn("No login specified. Quitting...")
+    }
   }
   gameListF: any = [];
   gameListP: any = [];
+  getUsers: any[];
+
   refreshList() {
     this.service.getGameListFuture().subscribe(data => {
       this.gameListF = data;
@@ -29,22 +32,34 @@ export class MainComponent implements OnInit {
     this.service.getGameListPast().subscribe(data => {
       this.gameListP = data;
     })
+    this.service.getUserList().subscribe(a=>{
+      this.getUsers = a;
+    });
   }
-  delete(data){
-    if (confirm("Are you sure you want to forfeit the game?")==true){
-      this.service.deleteGame(data).subscribe(data => {
-        this.refreshList();
-      });
+  delete(data, past) {
+    if (!past) {
+      if (confirm("Are you sure you want to forfeit the game?") == true) {
+        this.service.deleteGame(data).subscribe(data => {
+          this.refreshList();
+        });
+      }
+    }
+    else {
+      if (confirm("Are you sure you want to delete this game?") == true) {
+        this.service.deleteGame(data).subscribe(data => {
+          this.refreshList();
+        });
+      }
     }
   }
-  
-  pay(venue){
+
+  pay(venue) {
     var paylist = [];
-    this.service.getPay(venue).subscribe(d=>{
-      if (d.length > 0){
+    this.service.getPay(venue).subscribe(d => {
+      if (d.length > 0) {
         alert("Oops, this has been paid for.");
       }
-      else{
+      else {
         this.service.payingfor = venue;
         this.router.navigate(['/pay']);
       }

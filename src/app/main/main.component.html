@@ -18,7 +18,7 @@
             <td>{{dataItem.detail}}</td>
             <td>{{dataItem.date}} {{dataItem.time}}</td>
             <td>{{dataItem.venue}}</td>
-            <td><button (click)="delete(dataItem.id)" class="btn btn-danger">Drop</button></td>
+            <td><button (click)="delete(dataItem.id,false)" class="btn btn-danger">Drop</button></td>
 
         </tr>
 
@@ -41,7 +41,7 @@
             <td>{{dataItem.detail}}</td>
             <td>{{dataItem.date}} {{dataItem.time}}</td>
             <td>{{dataItem.venue}}</td>
-            <td><button (click)="pay(dataItem.id)" class="btn btn-primary">Finish</button></td>
+            <td><button (click)="pay(dataItem.id)" class="btn btn-primary">Finish</button><button (click)="delete(dataItem.id,true)" class="btn btn-danger">Delete</button></td>
 
         </tr>
 
